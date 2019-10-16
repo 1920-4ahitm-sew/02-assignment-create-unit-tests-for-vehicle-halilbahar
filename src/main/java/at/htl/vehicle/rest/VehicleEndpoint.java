@@ -26,14 +26,12 @@ public class VehicleEndpoint {
 
     @DELETE
     @Path("{id}")
-    public String deleteVehicle(@PathParam("id") long id) {
-        System.out.println("deleted" + id);
-        return id + " deleted";
+    public void deleteVehicle(@PathParam("id") long id) {
+        System.out.println("deleted " + id);
     }
 
     @POST
-    public String save(Vehicle vehicle) {
+    public void save(Vehicle vehicle) {
         System.out.println("Vehicle = " + vehicle);
-        return vehicle.getBrand() + " saved";
     }
 }
