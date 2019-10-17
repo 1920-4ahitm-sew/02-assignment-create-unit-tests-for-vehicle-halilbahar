@@ -38,19 +38,6 @@ public class VehicleEndpointIT {
     }
 
     @Test
-    public void crud() {
-        Response response = this.webTarget.request(MediaType.APPLICATION_JSON).get();
-        assertThat(response.getStatus(), is(200));
-        JsonArray payload = response.readEntity(JsonArray.class);
-        System.out.println("payload = " + payload);
-        assertThat(payload, not(empty()));
-
-        JsonObject vehicle = payload.getJsonObject(0);
-        assertThat(vehicle.getString("brand"), equalTo("Opel 42"));
-        assertThat(vehicle.getString("type"), startsWith("Commodore"));
-    }
-
-    @Test
     public void getVehicle() {
         // GET with id
         JsonObject dedicatedVehicle = this.webTarget
