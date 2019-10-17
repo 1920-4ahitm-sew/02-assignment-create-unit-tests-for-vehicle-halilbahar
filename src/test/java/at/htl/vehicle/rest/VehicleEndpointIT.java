@@ -26,7 +26,7 @@ public class VehicleEndpointIT {
     }
 
     @Test
-    public void fetchVehicle() {
+    public void getVehicles() {
         Response response = this.webTarget.request(MediaType.APPLICATION_JSON).get();
         assertThat(response.getStatus(), is(200));
         JsonArray payload = response.readEntity(JsonArray.class);
