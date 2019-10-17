@@ -1,5 +1,6 @@
 package at.htl.vehicle.rest;
 
+import at.htl.vehicle.model.Vehicle;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +8,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -55,5 +57,15 @@ public class VehicleEndpointIT {
                 .request(MediaType.APPLICATION_JSON)
                 .delete();
         assertThat(deleteResponse.getStatus(), is(204));
+    }
+
+    @Test
+    public void postVehicle() {
+        Vehicle vehicle = new Vehicle("Opel", "Astra");
+        Response postResponse = webTarget
+                .request()
+                .post(Entity.json(vehicle));
+        System.out.println("postResponse = " + postResponse);
+        assertThat(postResponse.getStatus(), is(204));
     }
 }
