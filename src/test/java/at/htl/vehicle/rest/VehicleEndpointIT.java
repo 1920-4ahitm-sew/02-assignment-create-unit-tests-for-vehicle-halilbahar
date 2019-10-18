@@ -1,8 +1,8 @@
 package at.htl.vehicle.rest;
 
 import at.htl.vehicle.model.Vehicle;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -15,13 +15,14 @@ import javax.ws.rs.core.Response;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 public class VehicleEndpointIT {
     private Client client;
     private WebTarget webTarget;
 
-    @Before
+    @BeforeEach
     public void initClient() {
         this.client = ClientBuilder.newClient();
         this.webTarget = client.target("http://localhost:8080/vehicle/api/vehicle");
